@@ -10,13 +10,16 @@ python resnet_predict.py resnet50_final.h5 my_test_image.png
 * [reference web](https://heartbeat.fritz.ai/how-to-fine-tune-resnet-in-keras-and-use-it-in-an-ios-app-via-core-ml-ee7fd84c1b26)
     * ctrl+shift+T open new terminal
     * pip list | grep Keras
+    * create .gitignore
+        * write down the filename or foldername
 
 
 ## DataPath
 * data
     * train 
     * valid
-* ResNet_FineTune.ipynb
+* resnet_train.py
+* resnet_predict.py
 ## Keras flow_from_dictionary  
 ```sh
 train_generator = train_datagen.flow_from_directory(
