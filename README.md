@@ -6,19 +6,15 @@ source activate tensorflow
 python resnet_train.py
 python resnet_predict.py resnet50_final.h5 my_test_image.png
 ```
+## Resnet keras Reference
 * [reference github](https://github.com/sebastianbk/finetuned-resnet50-keras)
 * [reference web](https://heartbeat.fritz.ai/how-to-fine-tune-resnet-in-keras-and-use-it-in-an-ios-app-via-core-ml-ee7fd84c1b26)
-    * ctrl+shift+T open new terminal
-    * pip list | grep Keras
-    * create .gitignore
-        * write down the filename or foldername
-
 
 ## DataPath
 * data
     * train 
     * valid
-* resnet_train.py
+* resnet_train.py 
 * resnet_predict.py
 ## Keras flow_from_dictionary  
 ```sh
@@ -69,3 +65,10 @@ datagen = ImageDataGenerator(
 * **fill_mode** is the strategy used for filling in newly created pixels, which can appear after a rotation or a width/height shift.
 
 * [reference web](https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html)
+## skill
+* ctrl+shift+T open new terminal
+* pip list | grep Keras
+* create .gitignore
+    * write down the filename or foldername
+
+
