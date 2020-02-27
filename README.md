@@ -1,6 +1,6 @@
 # ILD_Project
 
-## Activate virtual environment
+## Run the Project
 ```sh
 source activate tensorflow
 python resnet_train.py
@@ -16,7 +16,12 @@ python resnet_predict.py resnet50_final.h5 my_test_image.png
     * valid
 * resnet_train.py 
 * resnet_predict.py
-## Keras flow_from_dictionary  
+## Helpful Skill
+* ctrl+shift+T open new terminal
+* pip list | grep Keras
+* create .gitignore file
+    * write down the filename or foldername
+## Keras Generator using flow_from_dictionary  
 ```sh
 train_generator = train_datagen.flow_from_directory(
     directory=r"./train/",
@@ -42,7 +47,7 @@ train_generator = train_datagen.flow_from_directory(
 * seed
     * Random seed for applying random image augmentation and shuffling the order of the image
 * [tutorial web page](https://medium.com/@vijayabhaskar96/tutorial-image-classification-with-keras-flow-from-directory-and-generators-95f75ebe5720)
-## Small data
+## Keras Data augmentation
 ```sh
 from keras.preprocessing.image import ImageDataGenerator
 
@@ -65,10 +70,6 @@ datagen = ImageDataGenerator(
 * **fill_mode** is the strategy used for filling in newly created pixels, which can appear after a rotation or a width/height shift.
 
 * [reference web](https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html)
-## skill
-* ctrl+shift+T open new terminal
-* pip list | grep Keras
-* create .gitignore
-    * write down the filename or foldername
+
 
 
