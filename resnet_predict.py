@@ -9,21 +9,24 @@ from keras.preprocessing import image
 
 
 def predict(img_path, model):
+    print('Generating predictions on image:', img_path)
     img = image.load_img(img_path, target_size=(224, 224))
     x = image.img_to_array(img)
     x = np.expand_dims(x, axis=0)
     preds = model.predict(x)
+    print(preds)
     return preds
 
 if __name__ == '__main__':
     model_path = sys.argv[1]
-    print('Loading model:', model_path)
+    # print('Loading model:', model_path)
     t0 = time.time()
     model = load_model(model_path)
     t1 = time.time()
-    print('Loaded in:', t1-t0)
+    # print('Loaded in:', t1-t0)
 
-    test_path = sys.argv[2]
-    print('Generating predictions on image:', sys.argv[2])
-    preds = predict(sys.argv[2], model)
-    print(preds)
+    for i in range(117):
+        predict('ild_data/valid/normal/15_'+str(i+1)+'.jpg',model)
+    # test_path = sys.argv[2]
+    # preds = predict(sys.argv[2], model)
+    # print(preds)
