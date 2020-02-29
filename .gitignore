@@ -1,8 +1,5 @@
-data
+cat_dog_data
 data_store
 ild_data
 output
-pandas_train
-pandas_valid
 .ipynb_checkpoints
-ResNet_FineTune.ipynb
