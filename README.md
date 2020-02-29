@@ -4,11 +4,10 @@
 ```sh
 source activate tensorflow
 python resnet_train.py
-python resnet_predict.py resnet50_final.h5 my_test_image.png
+python resnet_predict.py resnet50_final.h5 NORMAL 11(folder) 58(picture num)  > outputtest
 ```
 ## Resnet keras Reference
 * [reference github](https://github.com/sebastianbk/finetuned-resnet50-keras)
-* [reference web](https://heartbeat.fritz.ai/how-to-fine-tune-resnet-in-keras-and-use-it-in-an-ios-app-via-core-ml-ee7fd84c1b26)
 ## DATA Description 
 * Lin Doctor (ILD ' Normal lung CT Folder)
     * ILD
@@ -41,10 +40,25 @@ python resnet_predict.py resnet50_final.h5 my_test_image.png
 * resnet_predict.py
 ## first train
 * train 
-    * 1-4 and 6-9 / 11-12 and 14
+    * 1,2,3,4,6,7,8,9(533) : 11,12,14(227)
 * valid
-    * 5 and 10 / 13 and 15
-
+    * 5,10(203) : 13,15(209)
+## second train
+* train
+    * 1,4,5,8,9 (337) : 13,14,15(339)
+* valid
+    * 2,3(98) : 11,12(97)
+* test
+    * 6,7,10
+* ![](https://i.imgur.com/W16QVlh.png)
+* train(0.99),valid(0.92),test(not good)
+## third train
+* train
+    *  
+* valid
+    *  
+* test
+    * 
 ## validation loss 
 * scale the batch size
     * 16-32-64
@@ -62,6 +76,17 @@ python resnet_predict.py resnet50_final.h5 my_test_image.png
 * pip list | grep Keras
 * create .gitignore file
     * write down the filename or foldername
+* python 
+    * str(integer)
+    * int('str')
+## Image processing 
+ ```sh
+img = image.load_img(img_path, target_size=(224, 224))
+```
+* numpy_array_dimension
+    * ndarray.shape
+    * eg: a.shape
+* 
 ## What is a Batch?
 * Batch Gradient Descent
     * Batch Size = Size of Training Set
