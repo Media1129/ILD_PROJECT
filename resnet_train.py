@@ -39,9 +39,9 @@ if __name__ == "__main__":
     last = model.layers[-1].output
     # x = Dense(len(classes), activation="softmax")(last)
     
-    one = Dense(32,activation="sigmoid")(last)
+    one = Dense(128,activation="sigmoid")(last)
     mid = Dropout(0.5)(one)
-    two = Dense(16,activation="sigmoid")(mid)
+    two = Dense(32,activation="sigmoid")(mid)
     final = Dropout(0.5)(two)
     x = Dense(len(classes), activation="softmax")(final)
     
@@ -56,7 +56,7 @@ if __name__ == "__main__":
     # early_stopping = EarlyStopping(patience=10)
     checkpointer = ModelCheckpoint('resnet50_best.h5', verbose=1, save_best_only=True)
 
-    finetuned_model.fit_generator(batches, steps_per_epoch=num_train_steps, epochs=200, callbacks=[early_stopping, checkpointer], validation_data=val_batches, validation_steps=num_valid_steps)
-    # finetuned_model.fit_generator(batches, steps_per_epoch=num_train_steps, epochs=150, callbacks=[checkpointer], validation_data=val_batches, validation_steps=num_valid_steps)
+    # finetuned_model.fit_generator(batches, steps_per_epoch=num_train_steps, epochs=200, callbacks=[early_stopping, checkpointer], validation_data=val_batches, validation_steps=num_valid_steps)
+    finetuned_model.fit_generator(batches, steps_per_epoch=num_train_steps, epochs=1000, callbacks=[checkpointer], validation_data=val_batches, validation_steps=num_valid_steps)
     
     # finetuned_model.save('resnet50_final.h5')

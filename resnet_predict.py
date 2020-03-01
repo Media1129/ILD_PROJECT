@@ -82,7 +82,9 @@ def bar_graph_plot_two(labels,lista,listb,title_name,y_label_name):
 
 if __name__ == '__main__':
     # calculate the predict 
-    model_path = 'resnet50_best.h5'
+    model_path = sys.argv[1]
+    # model_path = 'resnet50_best.h5'
+    print(model_path)
     model = load_model(model_path)
     picture_num = [36,7,91,34,97,96,99,116,54,105,58,39,92,130,117]
     ILD = []
@@ -106,7 +108,7 @@ if __name__ == '__main__':
     # label_DATA = ['067(1)','120(2)','163(3)','192(4)','195(5)','196(6)','023(7) ','076(8)','034(9)','197(10)','006(11)','011(12)','016(13)','Normal_01(14)','Normal_02(15)']
     ILD_DATA = [36,7,91,34,97,96,99,116,54,105,0,0,0,0,0]
     NORMAL_DATA = [0,0,0,0,0,0,0,0,0,0,58,39,92,130,117]
-    bar_graph_plot_two(labels,ILD_DATA,NORMAL_DATA,'Original DATA','DATA_NUM')
+    # bar_graph_plot_two(labels,ILD_DATA,NORMAL_DATA,'Original DATA','DATA_NUM')
     #plot the bar graph by NORMAL and ILD list
     bar_graph_plot_two(labels,ILD,NORMAL,'ILD(ONE-TEN) VS NORMAL(ELEVEN-FIFTEEN)','PREDICT_NUM')
    
