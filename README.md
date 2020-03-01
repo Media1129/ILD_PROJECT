@@ -95,13 +95,13 @@ python resnet_predict.py model_output/001_train.h5
     * network layer: 128-Dropout-32-Dropout
     * lr: 0.0001
     * epoch: 500
-* jklj
+* ![](https://i.imgur.com/9EFpNXl.png)
+* ![](https://i.imgur.com/aWx0qvs.png)
     * 008_train.h5
     * batch:16
     * network layer: 128-Dropout-32-Dropout
     * lr: 0.0001
     * epoch: 1000
-    * 9:30
 
 ## validation loss 
 * scale the batch size
