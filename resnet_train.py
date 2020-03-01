@@ -46,11 +46,8 @@ if __name__ == "__main__":
     x = Dense(len(classes), activation="softmax")(final)
     
     
-    finetuned_model = Model(model.input, x)
-    # finetuned_model.compile(optimizer=Adam(lr=0.0001), loss='categorical_crossentropy', metrics=['accuracy'])
-    
+    finetuned_model = Model(model.input, x) 
     finetuned_model.compile(optimizer=Adam(lr=0.0001), loss='categorical_crossentropy', metrics=['accuracy'])
-    # finetuned_model.compile(optimizer=SGD(lr=0.0001,momentum=0.9), loss='categorical_crossentropy', metrics=['accuracy'])
     
     for c in batches.class_indices:
         classes[batches.class_indices[c]] = c
@@ -59,7 +56,7 @@ if __name__ == "__main__":
     # early_stopping = EarlyStopping(patience=10)
     checkpointer = ModelCheckpoint('resnet50_best.h5', verbose=1, save_best_only=True)
 
-    # finetuned_model.fit_generator(batches, steps_per_epoch=num_train_steps, epochs=1000, callbacks=[early_stopping, checkpointer], validation_data=val_batches, validation_steps=num_valid_steps)
-    finetuned_model.fit_generator(batches, steps_per_epoch=num_train_steps, epochs=150, callbacks=[checkpointer], validation_data=val_batches, validation_steps=num_valid_steps)
+    finetuned_model.fit_generator(batches, steps_per_epoch=num_train_steps, epochs=200, callbacks=[early_stopping, checkpointer], validation_data=val_batches, validation_steps=num_valid_steps)
+    # finetuned_model.fit_generator(batches, steps_per_epoch=num_train_steps, epochs=150, callbacks=[checkpointer], validation_data=val_batches, validation_steps=num_valid_steps)
     
     # finetuned_model.save('resnet50_final.h5')

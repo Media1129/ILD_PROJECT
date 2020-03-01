@@ -4,45 +4,31 @@
 ```sh
 source activate tensorflow
 python resnet_train.py
-python resnet_predict.py resnet50_final.h5 NORMAL 11(folder) 58(picture num)  > outputtest
+python resnet_predict.py num)  
 ```
 ## Resnet keras Reference
 * [reference github](https://github.com/sebastianbk/finetuned-resnet50-keras)
 ## DATA Description 
+* ![](https://i.imgur.com/Rztfsgd.png)
+
 * Lin Doctor (ILD ' Normal lung CT Folder)
     * ILD
-        * 067(1) 36
-        * 120(2) 7
-        * 163(3) 91
-        * 192(4) 34
-        * 195(5) 97
+        * 067(1),120(2),163(3),192(4),195(5)
     * Normal
-        * 006(11) 58
-        * 011(12) 39
-        * 016(13) 92
+        * 006(11),011(12),016(13)
 * Wu Doctor(test folder)
     * ILD
-        * 196(6) 96
-        * 023(7) 99
-        * 076(8) 116
-        * 034(9) 54
-        * 197(10) 105
+        * 196(6),023(7),076(8),034(9),197(10)
     * Normal
-        * Normal_01(14) 130
-        * Normal_02(15) 117
-* ILD(735)
-* Normal(436)
-## code/data file
-* data
-    * train 
-    * valid
-* resnet_train.py 
-* resnet_predict.py
+        * Normal_01(14),Normal_02(15)
+* ILD(735),Normal(436)
 ## first train
 * train 
     * 1,2,3,4,6,7,8,9(533) : 11,12,14(227)
 * valid
     * 5,10(203) : 13,15(209)
+* validation(0.7) not work
+* the data i put  to train  is not balanced
 ## second train
 * train
     * 1,4,5,8,9 (337) : 13,14,15(339)
@@ -51,7 +37,10 @@ python resnet_predict.py resnet50_final.h5 NORMAL 11(folder) 58(picture num)  > 
 * test
     * 6,7,10
 * ![](https://i.imgur.com/W16QVlh.png)
-* train(0.99),valid(0.92),test(not good)
+* ![](https://i.imgur.com/U57u7eB.png)
+
+
+* train(0.99),valid(0.92)
 ## third train
 * train
     *  
@@ -76,9 +65,13 @@ python resnet_predict.py resnet50_final.h5 NORMAL 11(folder) 58(picture num)  > 
 * pip list | grep Keras
 * create .gitignore file
     * write down the filename or foldername
-* python 
-    * str(integer)
-    * int('str')
+* F2: rename the file name
+* **python** 
+    * **str(integer) , int('str')**
+    * **print("NORMAL_NUM=%d" % (NORMAL_NUM) )**
+    * **for FOLDER in range(1,16):**
+    * **labels = [ str(i) for i in range(1,16)]**
+    * **ILD_TYPE = 'ILD' if FOLDER <= 10 else 'NORMAL'**
 ## Image processing 
  ```sh
 img = image.load_img(img_path, target_size=(224, 224))
@@ -86,19 +79,18 @@ img = image.load_img(img_path, target_size=(224, 224))
 * numpy_array_dimension
     * ndarray.shape
     * eg: a.shape
-* 
-## What is a Batch?
+### What is a Batch?
 * Batch Gradient Descent
     * Batch Size = Size of Training Set
 * Stochastic Gradient Descent
     *  Batch Size = 1
 * Mini-Batch Gradient Descent
     * 1 < Batch Size < Size of Training Set
-## What Is an Epoch?
+### What Is an Epoch?
 * The number of epochs is a hyperparameter that defines the number times that the learning algorithm will work through the entire training dataset
 * You can think of a for-loop over the number of epochs where each loop proceeds over the training dataset. Within this for-loop is another nested for-loop that iterates over each batch of samples, where one batch has the specified “batch size” number of samples
 *  You may see examples of the number of epochs in the literature and in tutorials set to 10, 100, 500, 1000, and larger
-## What's is the difference between train, validation and test set, in neural networks?
+### What's is the difference between train, validation and test set, in neural networks?
 * The training and validation sets are used during training.
 ```sh
 for each epoch
@@ -122,7 +114,7 @@ for each epoch
     * If the accuracy over the training data set increases, but the accuracy over the validation data set stays the same or decreases, then you're overfitting your neural network and you should stop training
 * **Testing Set:** this data set is used only for testing the final solution in order to confirm the actual predictive power of the network.
 * [overflow reference web](https://stackoverflow.com/questions/2976452/whats-is-the-difference-between-train-validation-and-test-set-in-neural-netwo)
-## Keras Generator using flow_from_dictionary  
+### Keras Generator using flow_from_dictionary  
 ```sh
 train_generator = train_datagen.flow_from_directory(
     directory=r"./train/",
@@ -148,7 +140,7 @@ train_generator = train_datagen.flow_from_directory(
 * seed
     * Random seed for applying random image augmentation and shuffling the order of the image
 * [tutorial web page](https://medium.com/@vijayabhaskar96/tutorial-image-classification-with-keras-flow-from-directory-and-generators-95f75ebe5720)
-## Keras Data augmentation
+### Keras Data augmentation
 ```sh
 from keras.preprocessing.image import ImageDataGenerator
 
