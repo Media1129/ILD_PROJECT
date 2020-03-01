@@ -4,7 +4,7 @@
 ```sh
 source activate tensorflow
 python resnet_train.py
-python resnet_predict.py num)  
+python resnet_predict.py model_output/001_train.h5
 ```
 ## Resnet keras Reference
 * [reference github](https://github.com/sebastianbk/finetuned-resnet50-keras)
@@ -38,16 +38,71 @@ python resnet_predict.py num)
     * 6,7,10
 * ![](https://i.imgur.com/W16QVlh.png)
 * ![](https://i.imgur.com/U57u7eB.png)
+    * 001_train.h5
+    * batch:16
+    * network layer: 32-Dropout-16-Dropout
+    * lr: 0.0001
+    * epoch: 150
+* ![](https://i.imgur.com/jXFZCdy.png)
+* ![](https://i.imgur.com/BVqLCKD.png)
+    * 002_train.h5
+    * batch:16
+    * network layer: 128-Dropout-32-Dropout
+    * lr: 0.0001
+    * epoch: 200
+* ![](https://i.imgur.com/E4lIR3k.png)
+* ![](https://i.imgur.com/5WZIe2H.png)
+    * 003_train.h5
+    * batch:16
+    * network layer: 128-Dropout-32-Dropout
+    * lr: 0.0001
+    * epoch: 1000
+* ![](https://i.imgur.com/zc78PbR.png)
+* ![](https://i.imgur.com/UpFou60.png)
+    * 004_train.h5
+    * batch:32
+    * network layer: 128-Dropout-32-Dropout
+    * lr: 0.0001
+    * epoch: 500
 
 
 * train(0.99),valid(0.92)
 ## third train
 * train
-    *  
+    * 2,3,6,7(293) : 11,14,15(305)
 * valid
-    *  
+    * 5(97) : 13(92)
 * test
-    * 
+    * 4(34) : 12(39)
+* ![](https://i.imgur.com/hEx9eFe.png)
+* ![](https://i.imgur.com/KWEinuS.png)
+    * 005_train.h5
+    * batch:16
+    * network layer: 32-Dropout-16-Dropout
+    * lr: 0.0001
+    * epoch: 150
+* ![](https://i.imgur.com/NV8rTaI.png)
+* ![](https://i.imgur.com/s650Rke.png)
+    * 006_train.h5
+    * batch:16
+    * network layer: 32-Dropout-16-Dropout
+    * lr: 0.0001
+    * epoch: 500
+* ![](https://i.imgur.com/LjfuW9X.png)
+* ![](https://i.imgur.com/48pc8AX.png)
+    * 007_train.h5
+    * batch:16
+    * network layer: 128-Dropout-32-Dropout
+    * lr: 0.0001
+    * epoch: 500
+* jklj
+    * 008_train.h5
+    * batch:16
+    * network layer: 128-Dropout-32-Dropout
+    * lr: 0.0001
+    * epoch: 1000
+    * 9:30
+
 ## validation loss 
 * scale the batch size
     * 16-32-64
@@ -66,12 +121,14 @@ python resnet_predict.py num)
 * create .gitignore file
     * write down the filename or foldername
 * F2: rename the file name
+* Ubnutu: setting-set the automate lock screen
 * **python** 
     * **str(integer) , int('str')**
     * **print("NORMAL_NUM=%d" % (NORMAL_NUM) )**
     * **for FOLDER in range(1,16):**
     * **labels = [ str(i) for i in range(1,16)]**
     * **ILD_TYPE = 'ILD' if FOLDER <= 10 else 'NORMAL'**
+    * **python main.py sys.argv[1] sys.argv[2]**
 ## Image processing 
  ```sh
 img = image.load_img(img_path, target_size=(224, 224))
@@ -140,6 +197,21 @@ train_generator = train_datagen.flow_from_directory(
 * seed
     * Random seed for applying random image augmentation and shuffling the order of the image
 * [tutorial web page](https://medium.com/@vijayabhaskar96/tutorial-image-classification-with-keras-flow-from-directory-and-generators-95f75ebe5720)
+### keras earlystopping
+```sh
+keras.callbacks.EarlyStopping(monitor='val_loss', min_delta=0, patience=0
+, verbose=0, mode='auto', baseline=None, restore_best_weights=False)
+```
+* patience: 沒有進步的訓練輪數，在這之後訓練就會被停止
+### keras checkpoint
+```sh
+keras.callbacks.ModelCheckpoint(filepath, monitor='val_loss', verbose=0, 
+save_best_only=False, save_weights_only=False, mode='auto', period=1)
+```
+* filepath: 字符串，保存模型的路径。
+* monitor: 被监测的数据。
+* verbose: 详细信息模式，0 或者 1 。
+* save_best_only: 如果 save_best_only=True， 被监测数据的最佳模型就不会被覆盖。
 ### Keras Data augmentation
 ```sh
 from keras.preprocessing.image import ImageDataGenerator
