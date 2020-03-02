@@ -66,6 +66,7 @@ python resnet_predict.py model_output/001_train.h5
     * epoch: 500
 
 
+
 * train(0.99),valid(0.92)
 ## third train
 * train
@@ -73,7 +74,7 @@ python resnet_predict.py model_output/001_train.h5
 * valid
     * 5(97) : 13(92)
 * test
-    * 4(34) : 12(39)
+    * 1,4,8,9,10 : 12(39)
 * ![](https://i.imgur.com/hEx9eFe.png)
 * ![](https://i.imgur.com/KWEinuS.png)
     * 005_train.h5
@@ -102,7 +103,75 @@ python resnet_predict.py model_output/001_train.h5
     * network layer: 128-Dropout-32-Dropout
     * lr: 0.0001
     * epoch: 1000
+* ![](https://i.imgur.com/fLY5EsZ.png)
+* ![](https://i.imgur.com/7E03cKk.png)
+    * 009_train.h5
+    * batch:16
+    * network layer: 512-Dropout-128-Dropout
+    * lr: 0.0001
+    * epoch: 1000
+* ![](https://i.imgur.com/angzFiu.png)
+* ![](https://i.imgur.com/bm6y1mC.png)
+    * 010_train.h5
+    * batch:16
+    * network layer: 512-128
+    * lr: 0.0001
+    * epoch: 300
+* ![](https://i.imgur.com/eixuOfQ.png)
+* ![](https://i.imgur.com/U0nK9ea.png)
+    * 011_train.h5
+    * batch:16
+    * network layer: 16-Dropout-4-Dropout
+    * lr: 0.0001
+    * epoch: 300
+* ![](https://i.imgur.com/leNot9E.png)
+* ![](https://i.imgur.com/TqReAyr.png)
+    * 012_train.h5
+    * batch:16
+    * network layer: 16
+    * lr: 0.0001
+    * epoch: 300
+    * relu
 
+* ![](https://i.imgur.com/xhYhC3U.png)
+* ![](https://i.imgur.com/95yD9Eb.png)
+    * 013_train.h5
+    * batch:16
+    * network layer: 16
+    * lr: 0.0001
+    * epoch: 100
+    * sigmoid
+## four train 
+* train
+    * 3,5,10(293) : 11,13,14(280)
+* valid
+    * 1,9(90) : 15(117)
+* test
+    * 2,4,6,7,8 : 12(39)
+* ![](https://i.imgur.com/hKgBibh.png)
+* ![](https://i.imgur.com/rCxr8vF.png)
+    * 014_train.h5
+    * batch:16
+    * network layer: 16-Dropout
+    * lr: 0.0001
+    * epoch: 150
+    * relu
+* ![](https://i.imgur.com/whwz4xi.png)
+* ![](https://i.imgur.com/2bdA29P.png)
+    * 015_train.h5
+    * batch:16
+    * network layer: 4-Dropout
+    * lr: 0.0001
+    * epoch: 150
+    * sigmoid
+* ![](https://i.imgur.com/7aBF9xn.png)
+* ![](https://i.imgur.com/Hf0c8Nx.png)
+    * 016_train.h5
+    * batch:16
+    * network layer: 32-Dropout-16-Dropout
+    * lr: 0.0001
+    * epoch: 150
+    * relu
 ## validation loss 
 * scale the batch size
     * 16-32-64
