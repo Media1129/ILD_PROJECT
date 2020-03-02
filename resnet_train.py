@@ -16,6 +16,7 @@ SIZE = (224, 224)
 BATCH_SIZE = 16
 
 
+
 if __name__ == "__main__":
     num_train_samples = sum([len(files) for r, d, files in os.walk(TRAIN_DIR)])
     num_valid_samples = sum([len(files) for r, d, files in os.walk(VALID_DIR)])
