@@ -1,13 +1,14 @@
 import IPython
 import json, os, re, sys, time
 import numpy as np
-
+import keras
 import matplotlib
 import matplotlib.pyplot as plt
 from keras import backend as K
 from keras.applications.imagenet_utils import preprocess_input
 from keras.models import load_model
 from keras.preprocessing import image
+from keras.utils import to_categorical
 
 ILD_NUM = 0
 NORMAL_NUM = 0
@@ -20,10 +21,13 @@ def predict(img_path, model):
     x = np.expand_dims(x, axis=0)
     preds = model.predict(x)
     # calculate the prediction type
+    # print("pred1=%f pred2=%f" % (preds[0][0],preds[0][1]))
     if preds[0][0] > preds[0][1]:
         ILD_NUM += 1
+        # print("ILD")
     else:
         NORMAL_NUM += 1
+        # print("Normal")
     return preds
 
 def bar_graph_plot_one(labels,lista,title_name,y_label_name):
@@ -56,8 +60,8 @@ def bar_graph_plot_two(labels,lista,listb,title_name,y_label_name):
     width = 0.35  # the width of the bars
 
     fig, ax = plt.subplots()
-    rects1 = ax.bar(x - width/2, lista, width, label='ILD')
-    rects2 = ax.bar(x + width/2, listb, width, label='NORMAL')
+    rects1 = ax.bar(x - width/2, lista, width, label='predict with ILD')
+    rects2 = ax.bar(x + width/2, listb, width, label='predict without ILD')
 
     # Add some text for labels, title and custom x-axis tick labels, etc.
     ax.set_ylabel(y_label_name)
@@ -89,8 +93,11 @@ if __name__ == '__main__':
     picture_num = [36,7,91,34,97,96,99,116,54,105,58,39,92,130,117]
     ILD = []
     NORMAL = []
-    # read the one-fifteen folder send to predict
-    for FOLDER in range(1,16):
+    folder = [12]
+
+    #read the one-fifteen folder send to predict
+    # for FOLDER in range(1,16):
+    for FOLDER in folder:
         for i in range(picture_num[FOLDER-1]):
             #before ten the ILD_TYPE is ILD
             ILD_TYPE = 'ILD' if FOLDER <= 10 else 'NORMAL'
@@ -102,15 +109,37 @@ if __name__ == '__main__':
         ILD_NUM = 0
         NORMAL_NUM = 0
 
-    labels = [ str(i) for i in range(1,16)]
+    labels = [ 'patient '+str(i) for i in folder]
+    ILD_DATA = [0]
+    NORMAL_DATA = [39]
+    bar_graph_plot_two(labels,ILD,NORMAL,'Without ILD','PREDICT')
+    
 
+
+
+    
+    
+    # model evaluate
+    DATA_DIR = 'ild_data'
+    EVA_DIR = os.path.join(DATA_DIR, 'eva')
+    num_valid_samples = sum([len(files) for r, d, files in os.walk(EVA_DIR)])
+    gen = keras.preprocessing.image.ImageDataGenerator()
+    SIZE = (224, 224)
+    BATCH_SIZE = 16
+    batches = gen.flow_from_directory(EVA_DIR, target_size=SIZE, class_mode='categorical', shuffle=True, batch_size=1)
+    print( model.evaluate_generator(generator=batches,steps=num_valid_samples) )
+    
+
+
+
+
+
+
+    
     #plot the original data distribution
     # label_DATA = ['067(1)','120(2)','163(3)','192(4)','195(5)','196(6)','023(7) ','076(8)','034(9)','197(10)','006(11)','011(12)','016(13)','Normal_01(14)','Normal_02(15)']
-    ILD_DATA = [36,7,91,34,97,96,99,116,54,105,0,0,0,0,0]
-    NORMAL_DATA = [0,0,0,0,0,0,0,0,0,0,58,39,92,130,117]
     # bar_graph_plot_two(labels,ILD_DATA,NORMAL_DATA,'Original DATA','DATA_NUM')
     #plot the bar graph by NORMAL and ILD list
-    bar_graph_plot_two(labels,ILD,NORMAL,'ILD(ONE-TEN) VS NORMAL(ELEVEN-FIFTEEN)','PREDICT_NUM')
-   
+    
 
     
