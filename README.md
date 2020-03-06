@@ -5,6 +5,9 @@ source activate tensorflow
 python resnet_train.py
 python resnet_predict.py model_output/001_train.h5
 ```
+## evaluate vs training accuracy problem
+* [reference_1 webpage](https://stackoverflow.com/questions/47157526/resnet-100-accuracy-during-training-but-33-prediction-accuracy-with-the-same)
+* [reference_2 webpage](https://github.com/keras-team/keras/issues/8411)
 ## DATA Description 
 * ![](https://i.imgur.com/Rztfsgd.png)
 * Lin Doctor (ILD ' Normal lung CT Folder)
@@ -20,24 +23,21 @@ python resnet_predict.py model_output/001_train.h5
 * ILD(735),Normal(436)
 ## second train
 ### Train
-* ![](https://i.imgur.com/zvGsPLv.png)
-* ![](https://i.imgur.com/4Lm7X5m.png)
+* ![](https://i.imgur.com/8dyP2ow.jpg)
 ### Test
 * ![](https://i.imgur.com/XagCIhB.png)
     * 002_train.h5
+## -----------------------------------------------------------
 ## third train
 ### Train
-* ![](https://i.imgur.com/IyYA11P.png)
-* ![](https://i.imgur.com/A6yGVVM.png)
+* ![](https://i.imgur.com/spUaoeu.jpg)
 ### Test
-* ![](https://i.imgur.com/8wT9vZn.png)
-* ![](https://i.imgur.com/RE6VPQI.png)
+* ![](https://i.imgur.com/Tb2sIxq.jpg)
     * 005_train.h5
+## -----------------------------------------------------------
 ## four train 
 ### Train
-* ![](https://i.imgur.com/Wwb2C3M.png)
-* ![](https://i.imgur.com/Qway3UK.png)
+* ![](https://i.imgur.com/3sxXteA.jpg)
 ### Test
-* ![](https://i.imgur.com/Wq7JP5m.png)
-* ![](https://i.imgur.com/BAxYGju.png)
+* ![](https://i.imgur.com/YZYo2Y7.jpg)
     * 014_train.h5
