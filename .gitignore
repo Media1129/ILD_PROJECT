@@ -2,6 +2,11 @@ data_store
 ild_data
 second_train
 third_train
+four_train
+output_pic
+resnet50_best.h5
 resnet_layer.ipynb
+vgg_train.py
+viewoutput
 .ipynb_checkpoints
 model_output

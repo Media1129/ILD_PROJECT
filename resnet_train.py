@@ -53,8 +53,11 @@ if __name__ == "__main__":
     
     
     finetuned_model = Model(model.input, x) 
+
+    # finetuned_model.compile(optimizer=Adam(lr=0.0001), loss='categorical_crossentropy', metrics=['accuracy'])
     finetuned_model.compile(optimizer=Adam(lr=0.0001), loss='categorical_crossentropy', metrics=['accuracy'])
     
+
     for c in batches.class_indices:
         classes[batches.class_indices[c]] = c
     finetuned_model.classes = classes
@@ -64,5 +67,4 @@ if __name__ == "__main__":
 
     # finetuned_model.fit_generator(batches, steps_per_epoch=num_train_steps, epochs=200, callbacks=[early_stopping, checkpointer], validation_data=val_batches, validation_steps=num_valid_steps)
     finetuned_model.fit_generator(batches, steps_per_epoch=num_train_steps, epochs=150, callbacks=[checkpointer], validation_data=val_batches, validation_steps=num_valid_steps)
-    
     # finetuned_model.save('resnet50_final.h5')
