@@ -24,20 +24,26 @@ python resnet_predict.py model_output/001_train.h5
 ## second train
 ### Train
 * ![](https://i.imgur.com/8dyP2ow.jpg)
+* **accuracy:0.77**
 ### Test
 * ![](https://i.imgur.com/XagCIhB.png)
+* **accuracy:0.64**
     * 002_train.h5
 ## -----------------------------------------------------------
 ## third train
 ### Train
 * ![](https://i.imgur.com/spUaoeu.jpg)
+* **accuracy:0.948**
 ### Test
 * ![](https://i.imgur.com/Tb2sIxq.jpg)
+* **accuracy:0.75**
     * 005_train.h5
 ## -----------------------------------------------------------
 ## four train 
 ### Train
 * ![](https://i.imgur.com/3sxXteA.jpg)
+* **accuracy:0.806**
 ### Test
 * ![](https://i.imgur.com/YZYo2Y7.jpg)
+* **accuracy:0.71**
     * 014_train.h5
