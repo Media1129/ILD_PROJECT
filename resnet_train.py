@@ -8,7 +8,8 @@ from keras.optimizers import Adam,SGD
 from keras.preprocessing import image
 
 
-DATA_DIR = 'ild_data'
+# DATA_DIR = 'ild_data'
+DATA_DIR = "../cat_dog_data"
 TRAIN_DIR = os.path.join(DATA_DIR, 'train')
 VALID_DIR = os.path.join(DATA_DIR, 'valid')
 SIZE = (224, 224)
@@ -53,8 +54,6 @@ if __name__ == "__main__":
     
     
     finetuned_model = Model(model.input, x) 
-
-    # finetuned_model.compile(optimizer=Adam(lr=0.0001), loss='categorical_crossentropy', metrics=['accuracy'])
     finetuned_model.compile(optimizer=Adam(lr=0.0001), loss='categorical_crossentropy', metrics=['accuracy'])
     
 
