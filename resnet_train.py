@@ -8,13 +8,13 @@ from keras.optimizers import Adam,SGD
 from keras.preprocessing import image
 
 
-# DATA_DIR = 'ild_data'
-DATA_DIR = "../cat_dog_data"
+DATA_DIR = 'second_train'
+# DATA_DIR = "../cat_dog_data"
 TRAIN_DIR = os.path.join(DATA_DIR, 'train')
 VALID_DIR = os.path.join(DATA_DIR, 'valid')
 SIZE = (224, 224)
 # BATCH_SIZE = 32
-BATCH_SIZE = 16
+BATCH_SIZE = 8
 
 
 
@@ -38,7 +38,7 @@ if __name__ == "__main__":
     classes = list(iter(batches.class_indices))
     model.layers.pop()
     for layer in model.layers:
-        layer.trainable=False
+        layer.trainable=True
     last = model.layers[-1].output
     # x = Dense(len(classes), activation="softmax")(last)
     
@@ -65,5 +65,5 @@ if __name__ == "__main__":
     checkpointer = ModelCheckpoint('resnet50_best.h5', verbose=1, save_best_only=True)
 
     # finetuned_model.fit_generator(batches, steps_per_epoch=num_train_steps, epochs=200, callbacks=[early_stopping, checkpointer], validation_data=val_batches, validation_steps=num_valid_steps)
-    finetuned_model.fit_generator(batches, steps_per_epoch=num_train_steps, epochs=150, callbacks=[checkpointer], validation_data=val_batches, validation_steps=num_valid_steps)
+    finetuned_model.fit_generator(batches, steps_per_epoch=num_train_steps, epochs=50, callbacks=[checkpointer], validation_data=val_batches, validation_steps=num_valid_steps)
     # finetuned_model.save('resnet50_final.h5')
