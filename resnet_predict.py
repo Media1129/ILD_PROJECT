@@ -36,8 +36,13 @@ def predict_cat_dog(folder_path,cat_num,dog_num): # predict the cat_dog dataset
         NORMAL_NUM = 0
 
     labels = ['cat','dog']
+<<<<<<< HEAD
     # ILD_DATA = [cat_num,0]
     # NORMAL_DATA = [0,dog_num]
+=======
+    ILD_DATA = [cat_num,0]
+    NORMAL_DATA = [0,dog_num]
+>>>>>>> 447bd4081c03b6974054541b34cf597101027647
     bar_graph_plot_two(labels,ILD,NORMAL,'Cat_Dog','PREDICT')
 
 def evaluate_gen(folder_path,DATA_DIR,model): 
@@ -122,6 +127,7 @@ def bar_graph_plot_two(labels,lista,listb,title_name,y_label_name):
     plt.show()
 
 def analyse(model):
+<<<<<<< HEAD
     global ILD_NUM
     global NORMAL_NUM
     picture_num = [36,7,91,34,97,96,99,116,54,105,58,39,92,130,117]
@@ -136,6 +142,15 @@ def analyse(model):
 
     # for FOLDER in folder:
     for FOLDER in range(1,16):
+=======
+    picture_num = [36,7,91,34,97,96,99,116,54,105,58,39,92,130,117]
+    ILD = []
+    NORMAL = []
+    folder = [12]
+
+    # for FOLDER in range(1,16):
+    for FOLDER in folder:
+>>>>>>> 447bd4081c03b6974054541b34cf597101027647
         for i in range(picture_num[FOLDER-1]):
             #before ten the ILD_TYPE is ILD
             ILD_TYPE = 'ILD' if FOLDER <= 10 else 'NORMAL'
@@ -146,11 +161,19 @@ def analyse(model):
         NORMAL.append(NORMAL_NUM)
         ILD_NUM = 0
         NORMAL_NUM = 0
+<<<<<<< HEAD
     
     
     # ILD_DATA = [36,7,91,34,97,96,99,116,54,105,0,0,0,0,0]
     # NORMAL_DATA = [0,0,0,0,0,0,0,0,0,0,58,39,92,130,117]
     bar_graph_plot_two(labels,ILD,NORMAL,title,'PREDICT')
+=======
+
+    labels = [ 'patient '+str(i) for i in folder]
+    ILD_DATA = [0]
+    NORMAL_DATA = [39]
+    bar_graph_plot_two(labels,ILD,NORMAL,'Without ILD','PREDICT')
+>>>>>>> 447bd4081c03b6974054541b34cf597101027647
 
 
 
@@ -160,6 +183,7 @@ if __name__ == '__main__':
     model = load_model(model_path)
 
     # for ILD
+<<<<<<< HEAD
     # evaluate_gen('train',"two_train",model) 
     # evaluate_gen('test',"two_train",model)
     # evaluate_gen('train',"third_train",model) 
@@ -168,6 +192,15 @@ if __name__ == '__main__':
     evaluate_gen('test',"second_train",model) 
     analyse(model)
 
+=======
+    # evaluate_gen('train',"third_train",model) 
+    # evaluate_gen('test',"third_train",model) 
+    # evaluate_gen('train',"four_train",model) 
+    # evaluate_gen('test',"four_train",model) 
+    evaluate_gen('train',"second_train",model) 
+    evaluate_gen('test',"second_train",model)
+    # analyse(model)
+>>>>>>> 447bd4081c03b6974054541b34cf597101027647
 
 
     # for cat_dog
