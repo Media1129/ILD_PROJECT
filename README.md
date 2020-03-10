@@ -28,29 +28,63 @@ python resnet_predict.py ../model_output/001_train.h5
     * Normal
         * Normal_01(14),Normal_02(15)
 * ILD(735),Normal(436)
-## second train
+## 1_train
 ### Train
-* ![](https://i.imgur.com/8dyP2ow.jpg)
-* **accuracy:0.77**
+<!-- * ![](https://i.imgur.com/8dyP2ow.jpg) -->
+* ![](https://i.imgur.com/ETIdnfa.jpg)
+* **accuracy:1.0**
 ### Test
-* ![](https://i.imgur.com/XagCIhB.png)
-* **accuracy:0.64**
+<!-- * ![](https://i.imgur.com/XagCIhB.png) -->
+* ![](https://i.imgur.com/bVuZf7i.jpg)
+* **accuracy:0.87**
     * 002_train.h5
 ## -----------------------------------------------------------
-## third train
+## 2_train
 ### Train
-* ![](https://i.imgur.com/spUaoeu.jpg)
-* **accuracy:0.948**
+<!-- * ![](https://i.imgur.com/aN35f6k.png) -->
+<!-- * ![](https://i.imgur.com/spUaoeu.jpg) -->
+* ![](https://i.imgur.com/lE5cn8d.jpg)
+* **accuracy:1.0**
 ### Test
-* ![](https://i.imgur.com/Tb2sIxq.jpg)
-* **accuracy:0.75**
+<!-- * ![](https://i.imgur.com/Tb2sIxq.jpg) -->
+* ![](https://i.imgur.com/VH6V2bn.jpg)
+* **accuracy:0.90**
     * 005_train.h5
 ## -----------------------------------------------------------
-## four train 
+## 3_train 
 ### Train
 * ![](https://i.imgur.com/3sxXteA.jpg)
 * **accuracy:0.806**
 ### Test
-* ![](https://i.imgur.com/YZYo2Y7.jpg)
+<!-- * ![](https://i.imgur.com/YZYo2Y7.jpg) -->
+* ![](https://i.imgur.com/ohUkJnl.jpg)
 * **accuracy:0.71**
     * 014_train.h5
+## CAM output 
+* 觀察模型在意的特徵
+### **With ILD**
+* ![](https://i.imgur.com/HhZ76zZ.jpg)
+* model predict:ILD
+<!-- * 1_19 -->
+* ![](https://i.imgur.com/8HvlLCN.jpg)
+* model predict:ILD
+<!-- * 5_23 -->
+* ![](https://i.imgur.com/5xzgGXe.jpg)
+* model predict:ILD
+<!-- * 7_23 -->
+* ![](https://i.imgur.com/7rlRkdu.jpg)
+* model predict:ILD
+<!-- * 9_23 -->
+### **Without ILD**
+* ![](https://i.imgur.com/BG5AQsX.jpg)
+* model predict:Without ILD
+<!-- * 11_35 -->
+* ![](https://i.imgur.com/IKO9yPl.jpg)
+* model predict:Without ILD
+<!-- * 12_35 -->
+* ![](https://i.imgur.com/Tnsc3Kh.jpg)
+* model predict:Without ILD
+<!-- * 13_15 -->
+* ![](https://i.imgur.com/nWgJqbr.jpg)
+* model predict:Without ILD
+<!-- * 14_35 -->

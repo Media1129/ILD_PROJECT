@@ -36,8 +36,6 @@ def predict_cat_dog(folder_path,cat_num,dog_num): # predict the cat_dog dataset
         NORMAL_NUM = 0
 
     labels = ['cat','dog']
-    # ILD_DATA = [cat_num,0]
-    # NORMAL_DATA = [0,dog_num]
     bar_graph_plot_two(labels,ILD,NORMAL,'Cat_Dog','PREDICT')
 
 def evaluate_gen(folder_path,DATA_DIR,model): 
@@ -127,15 +125,30 @@ def analyse(model):
     picture_num = [36,7,91,34,97,96,99,116,54,105,58,39,92,130,117]
     ILD = []
     NORMAL = []
-    folder = []
-    # labels = [ 'patient '+str(i) for i in folder]
+
+    # third_train
+    # folder = [2,3,6,7]
+    # folder = [11,14,15]
+    # folder = [1,4,5,8,9,10]
+    # folder = [12,13]
+    #second_train
+    # folder = [1,4,5,8,9]
+    # folder = [13,14,15]
+    # folder = [2,3,6,7,10]
+    # folder = [11,12]
+    #four train
+    # folder = [1,2,4,6,7,8,9]
+    folder = [12,15]
+    
+
+    labels = [ 'patient '+str(i) for i in folder]
     # labels = [ 'patient '+str(i) for i in range(1,16)]
-    labels = [ str(i) for i in range(1,16)]
-    title = "With ILD"
+    # labels = [ str(i) for i in range(1,16)]
+    # title = "With ILD"
     title = "Without ILD"
 
-    # for FOLDER in folder:
-    for FOLDER in range(1,16):
+    for FOLDER in folder:
+    # for FOLDER in range(1,16):
         for i in range(picture_num[FOLDER-1]):
             #before ten the ILD_TYPE is ILD
             ILD_TYPE = 'ILD' if FOLDER <= 10 else 'NORMAL'
@@ -146,10 +159,7 @@ def analyse(model):
         NORMAL.append(NORMAL_NUM)
         ILD_NUM = 0
         NORMAL_NUM = 0
-    
-    
-    # ILD_DATA = [36,7,91,34,97,96,99,116,54,105,0,0,0,0,0]
-    # NORMAL_DATA = [0,0,0,0,0,0,0,0,0,0,58,39,92,130,117]
+
     bar_graph_plot_two(labels,ILD,NORMAL,title,'PREDICT')
 
 
@@ -160,12 +170,8 @@ if __name__ == '__main__':
     model = load_model(model_path)
 
     # for ILD
-    # evaluate_gen('train',"two_train",model) 
-    # evaluate_gen('test',"two_train",model)
-    # evaluate_gen('train',"third_train",model) 
-    # evaluate_gen('test',"third_train",model) 
-    evaluate_gen('train',"second_train",model) 
-    evaluate_gen('test',"second_train",model) 
+    # evaluate_gen('train',"second_train",model) 
+    # evaluate_gen('test',"second_train",model) 
     analyse(model)
 
 
