@@ -137,6 +137,8 @@ def analyse(model):
     # folder = [2,3,6,7,10]
     # folder = [11,12]
     #four train
+    # folder = [3,5,10]
+    # folder = [11,13,14]
     # folder = [1,2,4,6,7,8,9]
     folder = [12,15]
     
@@ -153,7 +155,9 @@ def analyse(model):
             #before ten the ILD_TYPE is ILD
             ILD_TYPE = 'ILD' if FOLDER <= 10 else 'NORMAL'
             pic_path = 'data_store/ALL_'+ILD_TYPE+'/'+str(FOLDER)+'/'+str(FOLDER)+'_'+str(i+1)+'.jpg' 
+            # print(pic_path,end="  ")
             predict(pic_path,model)
+        # print("\n\n\n")
         print("FOLDER=%d,ILD_NUM=%d,NORMAL_NUM=%d" % (FOLDER,ILD_NUM,NORMAL_NUM))
         ILD.append(ILD_NUM)
         NORMAL.append(NORMAL_NUM)
