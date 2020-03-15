@@ -8,7 +8,7 @@ from keras.optimizers import Adam,SGD
 from keras.preprocessing import image
 
 
-DATA_DIR = 'second_train'
+DATA_DIR = '../ILD_DATA/cut_data/first_cut'
 # DATA_DIR = "../cat_dog_data"
 TRAIN_DIR = os.path.join(DATA_DIR, 'train')
 VALID_DIR = os.path.join(DATA_DIR, 'valid')

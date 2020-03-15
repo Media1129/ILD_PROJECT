@@ -30,6 +30,11 @@ python resnet_predict.py ../model_output/001_train.h5
         * Normal_01(14),Normal_02(15)
 * ILD(735),Normal(436)
 
+:closed_book: Train Cut Lung CT
+--
+* ![](https://i.imgur.com/A8HoyDI.png)
+
+
 :closed_book:  First Train
 -- 
 ### Train

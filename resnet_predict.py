@@ -38,7 +38,7 @@ def predict_cat_dog(folder_path,cat_num,dog_num): # predict the cat_dog dataset
     labels = ['cat','dog']
     bar_graph_plot_two(labels,ILD,NORMAL,'Cat_Dog','PREDICT')
 
-def evaluate_gen(folder_path,DATA_DIR,model): 
+def evaluate_gen(DATA_DIR,folder_path,model): 
     EVA_DIR = os.path.join(DATA_DIR, folder_path)
     num_valid_samples = sum([len(files) for r, d, files in os.walk(EVA_DIR)])
     gen = keras.preprocessing.image.ImageDataGenerator()
@@ -118,6 +118,34 @@ def bar_graph_plot_two(labels,lista,listb,title_name,y_label_name):
     autolabel(rects2)
     fig.tight_layout()
     plt.show()
+def analyse_all(model,dir_path):
+    global ILD_NUM
+    global NORMAL_NUM
+    # picture_num = [36,7,91,34,97,96,99,116,54,105,58,39,92,130,117]
+    picture_num = [36,7,91,34,97,84,70,95,46,74,49,30,73,95,95]
+    
+    ILD = []
+    NORMAL = []
+
+    
+    labels = [ str(i) for i in range(1,16)]
+    title = "ALL "
+    
+    for FOLDER in range(1,16):
+        for i in range(picture_num[FOLDER-1]):
+            #before ten the ILD_TYPE is ILD
+            ILD_TYPE = 'ILD' if FOLDER <= 10 else 'NORMAL'
+            pic_path = dir_path+'/ALL_'+ILD_TYPE+'/'+str(FOLDER)+'/'+str(FOLDER)+'_'+str(i+1)+'.jpg' 
+            # print(pic_path,end="  ")
+            predict(pic_path,model)
+        # print("\n\n\n")
+        print("FOLDER=%d,ILD_NUM=%d,NORMAL_NUM=%d" % (FOLDER,ILD_NUM,NORMAL_NUM))
+        ILD.append(ILD_NUM)
+        NORMAL.append(NORMAL_NUM)
+        ILD_NUM = 0
+        NORMAL_NUM = 0
+    bar_graph_plot_two(labels,ILD,NORMAL,title,'PREDICT')
+
 
 def analyse(model):
     global ILD_NUM
@@ -140,17 +168,14 @@ def analyse(model):
     # folder = [3,5,10]
     # folder = [11,13,14]
     # folder = [1,2,4,6,7,8,9]
-    folder = [12,15]
+    # folder = [12,15]
     
 
     labels = [ 'patient '+str(i) for i in folder]
-    # labels = [ 'patient '+str(i) for i in range(1,16)]
-    # labels = [ str(i) for i in range(1,16)]
-    # title = "With ILD"
-    title = "Without ILD"
+    title = "With ILD"
+    # title = "Without ILD"
 
     for FOLDER in folder:
-    # for FOLDER in range(1,16):
         for i in range(picture_num[FOLDER-1]):
             #before ten the ILD_TYPE is ILD
             ILD_TYPE = 'ILD' if FOLDER <= 10 else 'NORMAL'
@@ -174,9 +199,12 @@ if __name__ == '__main__':
     model = load_model(model_path)
 
     # for ILD
-    # evaluate_gen('train',"second_train",model) 
-    # evaluate_gen('test',"second_train",model) 
-    analyse(model)
+    # evaluate_gen("second_train",'train',model) 
+    # evaluate_gen("second_train",'test',model) 
+    # analyse(model)
+    analyse_all(model,'../ILD_DATA/cut_store/')
+    # evaluate_gen('../ILD_DATA/cut_data/first_cut','train',model)
+    # evaluate_gen('../ILD_DATA/cut_data/first_cut','test',model)
 
 
 
