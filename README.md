@@ -1,4 +1,12 @@
-# GITHUB_ILD
+GITHUB_ILD
+===
+:::info
+* **本周進度**
+    - 分析模型預測好壞的原因
+    - 利用切出肺的CT照片預測
+:::
+
+
 :closed_book: Run the Project
 -- 
 ```sh
@@ -33,7 +41,7 @@ python resnet_predict.py ../model_output/001_train.h5
         * Normal_01(14),Normal_02(15)
 * ILD(735),Normal(436)
 
-:closed_book:  1_train
+:closed_book:  First Train
 -- 
 ### Train
 <!-- * ![](https://i.imgur.com/8dyP2ow.jpg) -->
@@ -43,13 +51,16 @@ python resnet_predict.py ../model_output/001_train.h5
 <!-- * ![](https://i.imgur.com/XagCIhB.png) -->
 * ![](https://i.imgur.com/bVuZf7i.jpg)
 * **accuracy:0.85**
+* **Analysis the result**
     * patient_10 
-        * 1-20 and 92-105 significant error
+        * 前20張沒有那麼明顯
+        * 後面十張預測錯是因為已經不是肺了
     * patient_11
-        * 1-21 significant error
+        * 前20張CT預測錯 
+        * 看不太出來原因
     * 019_train.h5
 
-:closed_book:  2_train
+:closed_book:  Second Train
 --
 ### Train
 <!-- * ![](https://i.imgur.com/aN35f6k.png) -->
@@ -60,11 +71,13 @@ python resnet_predict.py ../model_output/001_train.h5
 <!-- * ![](https://i.imgur.com/Tb2sIxq.jpg) -->
 * ![](https://i.imgur.com/VH6V2bn.jpg)
 * **accuracy:0.93**
+* **Analysis the result**
     * patient_1
         * all error 
+        * CT照片相較其他病患網狀沒有那麼嚴重
     * 017_train.h5
 
-:closed_book: 3_train 
+:closed_book: Third Train 
 --
 ### Train
 <!-- * ![](https://i.imgur.com/3sxXteA.jpg) -->
@@ -76,6 +89,8 @@ python resnet_predict.py ../model_output/001_train.h5
 <!-- * ![](https://i.imgur.com/ohUkJnl.jpg) -->
 * ![](https://i.imgur.com/TVDcSzI.jpg)
 * **accuracy:0.69**
+    * patient 1,2,7,12 錯很多
+    * 可能是train沒有訓練到
     * 018_train.h5
 
 :closed_book:  CAM output 
