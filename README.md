@@ -14,17 +14,6 @@ source activate tensorflow
 python resnet_train.py
 python resnet_predict.py ../model_output/001_train.h5
 ```
-:closed_book: evaluate vs training accuracy problem
---
-- [reference_1 webpage](https://stackoverflow.com/questions/47157526/resnet-100-accuracy-during-training-but-33-prediction-accuracy-with-the-same)
-- [reference_2 webpage](https://github.com/keras-team/keras/issues/8411)
-- above reference say the the reason why the evaluate different from training accuracy,because of 
-    - the batch normalization layers.
-    - In training phase, the batch is normalized w.r.t. its mean and variance. 
-    - However, in testing phase, the batch is normalized w.r.t. the moving average of previously observed mean and variance.
-- my try (Use easy dataset cat_and_dog train)
-    - model.evaluate_generator and  training accuracy are same(0.99)
-    - model.evaluate_generator and previous predict outcome are same
 
 :closed_book: DATA Description
 --
