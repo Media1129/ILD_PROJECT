@@ -4,6 +4,8 @@ GITHUB_ILD
 * **本周進度**
     - 分析模型預測好壞的原因
     - 利用切出肺的CT照片預測
+    - study the labelme
+    - check the cam of cut lung 
 :::
 
 
@@ -33,7 +35,15 @@ python resnet_predict.py ../model_output/001_train.h5
 :closed_book: Train Cut Lung CT
 --
 * ![](https://i.imgur.com/A8HoyDI.png)
+### Train
+* ![](https://i.imgur.com/8BtqufR.jpg)
+* **accuracy:1.0**
+### Test
+* ![](https://i.imgur.com/cNcCWxg.jpg)
+* **accuracy:0.711**
 
+<!-- :closed_book: Cam Cut Lung CT
+-- -->
 
 :closed_book:  First Train
 -- 
@@ -69,6 +79,10 @@ python resnet_predict.py ../model_output/001_train.h5
     * patient_1
         * all error 
         * CT照片相較其他病患網狀沒有那麼嚴重
+        * ![](https://i.imgur.com/DIFyyFJ.jpg)
+        * ![](https://i.imgur.com/cheAQrD.jpg)
+
+
     * 017_train.h5
 
 :closed_book: Third Train 

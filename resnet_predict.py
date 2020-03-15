@@ -147,10 +147,11 @@ def analyse_all(model,dir_path):
     bar_graph_plot_two(labels,ILD,NORMAL,title,'PREDICT')
 
 
-def analyse(model):
+def analyse(model,dir_path):
     global ILD_NUM
     global NORMAL_NUM
-    picture_num = [36,7,91,34,97,96,99,116,54,105,58,39,92,130,117]
+    # picture_num = [36,7,91,34,97,96,99,116,54,105,58,39,92,130,117]
+    picture_num = [36,7,91,34,97,84,70,95,46,74,49,30,73,95,95]
     ILD = []
     NORMAL = []
 
@@ -158,7 +159,7 @@ def analyse(model):
     # folder = [2,3,6,7]
     # folder = [11,14,15]
     # folder = [1,4,5,8,9,10]
-    # folder = [12,13]
+    folder = [12,13]
     #second_train
     # folder = [1,4,5,8,9]
     # folder = [13,14,15]
@@ -172,14 +173,14 @@ def analyse(model):
     
 
     labels = [ 'patient '+str(i) for i in folder]
-    title = "With ILD"
-    # title = "Without ILD"
+    # title = "With ILD"
+    title = "Without ILD"
 
     for FOLDER in folder:
         for i in range(picture_num[FOLDER-1]):
             #before ten the ILD_TYPE is ILD
             ILD_TYPE = 'ILD' if FOLDER <= 10 else 'NORMAL'
-            pic_path = 'data_store/ALL_'+ILD_TYPE+'/'+str(FOLDER)+'/'+str(FOLDER)+'_'+str(i+1)+'.jpg' 
+            pic_path = dir_path+'/ALL_'+ILD_TYPE+'/'+str(FOLDER)+'/'+str(FOLDER)+'_'+str(i+1)+'.jpg' 
             # print(pic_path,end="  ")
             predict(pic_path,model)
         # print("\n\n\n")
@@ -201,8 +202,10 @@ if __name__ == '__main__':
     # for ILD
     # evaluate_gen("second_train",'train',model) 
     # evaluate_gen("second_train",'test',model) 
-    # analyse(model)
-    analyse_all(model,'../ILD_DATA/cut_store/')
+    
+    #pic_num will change to original when picture is complete
+    analyse(model,'../ILD_DATA/cut_store/')
+    # analyse_all(model,'../ILD_DATA/cut_store/')
     # evaluate_gen('../ILD_DATA/cut_data/first_cut','train',model)
     # evaluate_gen('../ILD_DATA/cut_data/first_cut','test',model)
 
