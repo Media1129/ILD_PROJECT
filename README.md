@@ -45,6 +45,32 @@ python resnet_predict.py ../model_output/001_train.h5
 <!-- :closed_book: Cam Cut Lung CT
 -- -->
 
+:closed_book:  Cam of cut lung 
+-- 
+* ![](https://i.imgur.com/dU2E8RW.jpg)
+    * 1_19
+* ![](https://i.imgur.com/qt7PMXl.jpg)
+    * 5_23
+* ![](https://i.imgur.com/o5BaHHb.jpg)
+    * 7_23
+* ![](https://i.imgur.com/zlkxrkp.jpg)
+    * 9_23
+* ![](https://i.imgur.com/51x5Ntp.jpg)
+    * 11_35
+* ![](https://i.imgur.com/Wz6XtZv.jpg)
+    * 12_25
+* ![](https://i.imgur.com/ufQkDzP.jpg)
+    * 13_15
+* ![](https://i.imgur.com/ELcA6AS.jpg)
+    * 14_35
+
+
+
+
+
+
+
+
 :closed_book:  First Train
 -- 
 ### Train
